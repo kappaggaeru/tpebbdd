@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-	<!-- <div class="container mt-2" name="tabla con datos">
+	 <div class="container mt-2" name="tabla con datos">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -31,5 +31,5 @@
 				</tr>
 			</tbody>
 		</table>
-	</div> -->
+	</div> 
 {include file="footer.tpl"}
