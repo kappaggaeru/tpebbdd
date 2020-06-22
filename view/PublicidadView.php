@@ -5,7 +5,7 @@ class PublicidadView extends View{
         parent::__construct();
     }
     function home(){
-        $this->smarty->display('template/home.tpl');
+        $this->smarty->display('templates/home.tpl');
     }
 }
 ?>
