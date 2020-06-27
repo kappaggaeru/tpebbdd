@@ -1,9 +1,10 @@
 <?php
-define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"].":".$_SERVER['SERVER_PORT'].dirname($_SERVER["PHP_SELF"]));
+define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"].":".$_SERVER['SERVER_PORT'].dirname($_SERVER["PHP_SELF"]). '/home');
 define('ROOT', dirname($_SERVER["PHP_SELF"]));
 
 require_once('config/ConfigApp.php');
 require_once('controller/PublicidadController.php');
+require_once('controller/LoginController.php');
 function parseURL($url){
     // explode() crea un string en un array, quita lo que haya en el parametro
     $urlExploded = explode('/',$url);

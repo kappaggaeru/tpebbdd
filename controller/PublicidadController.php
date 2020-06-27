@@ -1,7 +1,10 @@
 <?php
     require_once('model/PublicidadModel.php');
     require_once('view/PublicidadView.php');
-    class PublicidadController{
+    require_once('SecuredController.php');
+   
+
+    class PublicidadController extends SecuredController{
         private $model;
         private $view;
         function __construct(){

@@ -11,11 +11,14 @@ class PublicidadModel extends Model{
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     // loguearse
-    function login($email,$pass){
-        $query = $this->db->prepare("SELECT 1 FROM GR8_USUARIO WHERE email = ? AND password = ?");
-        $query->execute(array($email,$pass));
-        return $sentencia->fetch(PDO::FETCH_ASSOC);
+    function login($email){
+        $sentencia = $this->db->prepare( "SELECT * from GR8_USUARIO where email = ? limit 1");
+        $sentencia->execute(array($email));
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
+  
+
+
     // registrarse
     // function signin($apellido,$nombre,$email,$tipo,$pass){
     //     $id = getLastId() + 1;//la verdad que no se si eso funciona
@@ -42,6 +45,12 @@ class PublicidadModel extends Model{
         $id = getLastCategoria() + 1;
         $query = $this->db->prepare("INSERT INTO GR8_CATEGORIA VALUES(?,?,?)");
         $query->execute($id,array($desc,$nivel));
+    }
+
+    function getLastCategoria(){
+        $query = $this->db->prepare("SELECT id_categoria FROM GR8_CATEGORIA ORDER BY 1 DESC LIMIT 1");
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
     // comentario
     function createComentario($user,$juego,$fecha,$texto){
