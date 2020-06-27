@@ -3,7 +3,9 @@ class ConfigApp{
     public static $ACTION = 'action';
     public static $PARAMS = 'params';
     public static $ACTIONS = [
-        '' => 'PublicidadController#home',
+        '' => 'LoginController#login',
+        'verificarLogin'=>'LoginController#verificarLogin',
+        'home' => 'PublicidadController#home',
         'test' => 'PublicidadController#test'
     ];
 }
