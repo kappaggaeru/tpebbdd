@@ -9,16 +9,15 @@
   <thead>
     <tr>
       <th scope="col">Nombre Juego</th>
-      <th scope="col">descripción</th>
+      <th scope="col">Descripción</th>
     </tr>
   </thead>
   <tbody>
-  
-    {foreach from=$Juegos item=juego}
-              <tr>
-                <td>{$juego['nombre_juego']}</td>
-                <td>{$juego['descripcion_juego']}</td>
-              </tr>
+    {foreach from=$juegos item=juego}
+    <tr>
+      <td>{$juego['nombre']}</td>
+      <td>{$juego['apellido']}</td>
+    </tr>
     {/foreach}
   </tbody>
 </table>

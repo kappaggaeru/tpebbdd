@@ -1,7 +1,7 @@
 <?php
 
 require_once  "view/LoginView.php";
-require_once  "model/publicidadModel.php";
+require_once  "model/PublicidadModel.php";
 class LoginController 
 {
   private $view;

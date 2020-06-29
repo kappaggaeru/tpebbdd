@@ -12,8 +12,8 @@
             $this->view = new PublicidadView();
         }
         function home(){
-/*             $Juegos = $this->model->getUsuarios(); */
-            $this->view->home($Juegos);
+            $juegos = $this->model->getUsuarios();
+            $this->view->home($juegos);
         }
 
         function mostrarCategoria(){

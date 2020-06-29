@@ -36,8 +36,9 @@ class PublicidadModel extends Model{
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
    }
-
-
+    function getTopJuegos(){
+        // $query = $this->db->prepare("")
+    }
     // categoria
     function getCategorias(){
         $query = $this->db->prepare("SELECT * FROM GR8_CATEGORIA");
