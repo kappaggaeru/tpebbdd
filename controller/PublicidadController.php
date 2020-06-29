@@ -12,10 +12,28 @@
             $this->view = new PublicidadView();
         }
         function home(){
-            $this->view->home();
+/*             $Juegos = $this->model->getUsuarios(); */
+            $this->view->home($Juegos);
+        }
+
+        function mostrarCategoria(){
+            $this->view->categoria();
         }
         function test(){
             print_r($this->model->test());
         }
+
+        function mostrarUsuarios(){
+            $Usuarios = $this->model->getUsuarios();
+            $this->view->mostrarUsarios($Usuarios);
+        }
+
+        function InsertCategoria(){
+            $desc = $_POST["descripcion"];
+            $nivel = $_POST["nivel"];
+            $id =  $this->model->getLastCategoria();
+            $this->model->createCategoria($id["id_categoria"]+1,$desc,$nivel);
+            header(HOME);
+          }
     }
 ?>

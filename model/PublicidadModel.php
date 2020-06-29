@@ -30,7 +30,14 @@ class PublicidadModel extends Model{
     //     $query = $this->db->prepare("SELECT id_usuario FROM GR8_USUARIO ORDER BY 1 DESC LIMIT 1");
     //     $query->execute();
     //     return $query->fetch(PDO::FETCH_ASSOC);
-    // }
+    // USUARIOS
+    function getUsuarios(){
+        $sentencia = $this->db->prepare( "SELECT * FROM GR8_USUARIO");
+        $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+   }
+
+
     // categoria
     function getCategorias(){
         $query = $this->db->prepare("SELECT * FROM GR8_CATEGORIA");
@@ -41,10 +48,9 @@ class PublicidadModel extends Model{
         $query = $this->db->prepare("DELETE FROM GR8_CATEGORIA WHERE id_categoria = ?");
         $query->execute($id);
     }
-    function createCategoria($desc,$nivel){
-        $id = getLastCategoria() + 1;
+    function createCategoria($id,$desc,$nivel){
         $query = $this->db->prepare("INSERT INTO GR8_CATEGORIA VALUES(?,?,?)");
-        $query->execute($id,array($desc,$nivel));
+        $query->execute(array($id,$desc,$nivel));
     }
 
     function getLastCategoria(){

@@ -28,15 +28,16 @@ class LoginController
   function verificarLogin(){
     $email = $_POST["email"];
     $pass = $_POST["password"];
-    echo($email);
     $dbUser = $this->model->login($email);
     if(isset($dbUser)){
-          if ($pass == $dbUser[0]["password"]){
+      $password = password_hash($dbUser[0]["password"],PASSWORD_DEFAULT);
+          if (password_verify($pass, $password)){
               session_start();
               $_SESSION["User"] = $dbUser[0]["id_usuario"];
-              print_r($_SESSION);
+              header(HOME);
           }else{
             $this->view->mostrarLogin("Contraseña incorrecta");
+            
           }
       }else{
         //No existe el usario
