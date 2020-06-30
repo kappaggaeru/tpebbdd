@@ -15,8 +15,8 @@
   <tbody>
     {foreach from=$juegos item=juego}
     <tr>
-      <td>{$juego['nombre']}</td>
-      <td>{$juego['apellido']}</td>
+      <td>{$juego['nombre_juego']}</td>
+      <td>{$juego['descripcion_juego']}</td>
     </tr>
     {/foreach}
   </tbody>

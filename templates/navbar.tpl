@@ -8,10 +8,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="inicio">Inicio</a>
+      <a class="nav-item nav-link" href="home">Inicio</a>
       <a class="nav-item nav-link" href="usuarios">Usuarios</a>
       <a class="nav-item nav-link" href="cargar">Cargar Categorias <span class="sr-only">(current)</span></a>
-        {if {isset($_SESSION)}}
+        {if {$logeado}}  
             <a class="nav-item nav-link" href="logout">Cerrar sesión</a>
         {/if}
     </div>

@@ -12,6 +12,7 @@ class LoginView
   function mostrarLogin($message = ''){
     $this->Smarty->assign('Titulo',"Login");
     $this->Smarty->assign('Message',$message);
+    $this->Smarty->assign('logeado',false);
     $this->Smarty->display('templates/login.tpl');
   }
 }

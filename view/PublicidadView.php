@@ -9,6 +9,7 @@ class PublicidadView extends View{
         // $this->smarty->assign('posiciones',$posiciones);
         // $this->smarty->display('templates/posiciones.tpl');
         $this->smarty->assign('juegos',$juegos);
+        $this->smarty->assign('logeado',true);
         $this->smarty->display('templates/home.tpl');
     }
 
@@ -17,10 +18,9 @@ class PublicidadView extends View{
     }
 
     function mostrarUsarios($Usuarios){
-        $smarty = new Smarty();
-        $smarty->assign('Usuarios',$Usuarios);
+        $this->smarty->assign('Usuarios',$Usuarios);
         //$smarty->debugging = true;
-        $smarty->display('templates/MostrarUsuarios.tpl');
+        $this->smarty->display('templates/MostrarUsuarios.tpl');
     }
 }
 ?>

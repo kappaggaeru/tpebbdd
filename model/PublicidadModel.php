@@ -32,12 +32,36 @@ class PublicidadModel extends Model{
     //     return $query->fetch(PDO::FETCH_ASSOC);
     // USUARIOS
     function getUsuarios(){
-        $sentencia = $this->db->prepare( "SELECT * FROM GR8_USUARIO");
+        $sentencia = $this->db->prepare( "SELECT * FROM GR8_USUARIO limit 10");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
    }
     function getTopJuegos(){
-        // $query = $this->db->prepare("")
+        $query = $this->db->prepare("select id_juego from gr8_voto group by 1 order by count(*) desc limit 10");
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getUsuariosPorBusqueda($patron){
+        $query = $this->db->prepare("SELECT * FROM gr8_usuario where nombre like ?");
+        $query->execute(array($patron));
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function getJuegosJugados($user){
+        $query = $this->db->prepare("SELECT COUNT(*) FROM GR8_JUEGA WHERE id_usuario = ? AND finalizado IS NOT NULL");
+        $query->execute(array($user));
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    function getVotosRealizados($user){
+        $query = $this->db->prepare("SELECT COUNT(*) as votos FROM GR8_VOTO WHERE id_usuario = ?");
+        $query->execute(array($user));
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getJuego($id){
+        $sentencia = $this->db->prepare( "SELECT * from gr8_juego where id_juego = ?");
+        $sentencia->execute(array($id));
+        return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
     // categoria
     function getCategorias(){
@@ -91,6 +115,9 @@ class PublicidadModel extends Model{
         $query->execute(array($juego));
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+
     // recomendacion
     function createRecomendacion($juego,$user,$email){
         $id = getLastRecomendacion()+1;

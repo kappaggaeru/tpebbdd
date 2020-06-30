@@ -12,7 +12,11 @@
             $this->view = new PublicidadView();
         }
         function home(){
-            $juegos = $this->model->getUsuarios();
+            $id_juegos = $this->model->getTopJuegos();
+            $juegos= array();     
+            for ($i = 0; $i < 10; $i++){
+                $juegos[$i]=$this->model->getJuego($id_juegos[$i]["id_juego"]);
+            }
             $this->view->home($juegos);
         }
 
@@ -24,7 +28,21 @@
         }
 
         function mostrarUsuarios(){
+            $criterio = $_POST["buscador"];
+            $Usuarios = $this->model->getUsuariosPorBusqueda($criterio);
+            for ($i = 0; $i < count($Usuarios); $i++){
+               array_push($Usuarios[$i],$this->model->getVotosRealizados($Usuarios[$i]["id_usuario"]));
+               array_push($Usuarios[$i],$this->model->getJuegosJugados($Usuarios[$i]["id_usuario"]));
+            }
+            $this->view->mostrarUsarios($Usuarios);
+        }
+
+        function mostrar10Usuarios(){
             $Usuarios = $this->model->getUsuarios();
+            for ($i = 0; $i < count($Usuarios); $i++){
+               array_push($Usuarios[$i],$this->model->getVotosRealizados($Usuarios[$i]["id_usuario"]));
+               array_push($Usuarios[$i],$this->model->getJuegosJugados($Usuarios[$i]["id_usuario"]));
+            }
             $this->view->mostrarUsarios($Usuarios);
         }
 
