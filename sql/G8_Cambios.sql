@@ -70,8 +70,10 @@ FOR EACH ROW
 EXECUTE PROCEDURE TRFN_GR8_COMENTAR_JUEGO_JUGADO();
 --Sentencia que activa la restricción:INSERT INTO GR8_COMENTARIO VALUES (2,1,9,'1999-01-08 04:05:06','wUENARDO');
 
+
+--Restriccion personal
 -- Solo los usuarios que han jugado tendrán la opción de votar y recomendar un juego en particular.
-CREATE OR REPLACE FUNCTION TRFN_GR8_JUEGO_JUGADO() RETURNS Trigger AS $$
+/* CREATE OR REPLACE FUNCTION TRFN_GR8_JUEGO_JUGADO() RETURNS Trigger AS $$
 BEGIN
   IF(EXISTS(
     SELECT 1
@@ -95,7 +97,7 @@ CREATE TRIGGER TR_GR8_VOTO_VALIDO
 BEFORE INSERT OR UPDATE OF id_usuario,id_juego
 ON GR8_VOTO
 FOR EACH ROW
-EXECUTE PROCEDURE TRFN_GR8_JUEGO_JUGADO();
+EXECUTE PROCEDURE TRFN_GR8_JUEGO_JUGADO(); */
 --Sentencia que activa la restricción:INSERT INTO GR8_RECOMENDACION VALUES(1,'example@org.com',1,1);
 --Respuesta del DBMS:
 --ERROR:  Para recomendar/votar un juego primero debe haberlo finalizado
